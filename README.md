@@ -43,11 +43,15 @@ Go Healing is a Flutter application designed for studying Flutter. This app is b
     ```sh
     flutter test --coverage
     ```
-3. Open the coverage report:
+3. Exclude unused files:
     ```sh
-    genhtml coverage/lcov.info -o coverage/html
+    lcov --remove coverage/lcov.info "lib/core/error/*" "lib/features/*/data/models/*" -o coverage/lcov.info --ignore-errors unused,unused
     ```
-4. Open the `index.html` file in your browser to view the coverage report:
+4. Generate the HTML report:
+    ```sh
+    genhtml coverage/lcov.info -o coverage/html --legend -t "Go Healing" --function-coverage
+    ```
+5. Open the `index.html` file in your browser to view the coverage report:
     ```sh
     open coverage/html/index.html
     ```
